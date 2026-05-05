@@ -1,12 +1,10 @@
 {
-  "name": "project",
+  {
+  "name": "task-manager",
   "version": "1.0.0",
-  "description": "",
-  "main": "single_file_full_stack_app_node_express_frontend.js",
+  "main": "app.js",
   "scripts": {
-     "start": "node app.js"
-    "test": "echo \"Error: no test specified\" && exit 1"
-    
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
@@ -19,9 +17,11 @@
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.6.1"
   },
-  "devDependencies": {
-    "autoprefixer": "^10.5.0",
-    "postcss": "^8.5.14",
-    "tailwindcss": "^4.2.4"
+   "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "jsonwebtoken": "^9.0.0"
   }
 }
