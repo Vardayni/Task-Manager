@@ -1,13 +1,4 @@
-// =============================
-// FULL STACK APP (MongoDB + Roles + Dashboard)
-// Run:
-// npm init -y
-// npm install express mongoose jsonwebtoken cors dotenv
-// Create .env file:
-// MONGO_URI=your_mongodb_uri
-// JWT_SECRET=secret123
-// Then: node app.js
-// =============================
+
 
 require('dotenv').config();
 const express = require("express");
@@ -53,7 +44,7 @@ const User = mongoose.model("User", userSchema);
 const Project = mongoose.model("Project", projectSchema);
 const Task = mongoose.model("Task", taskSchema);
 
-// ================= AUTH =================
+
 function auth(req, res, next) {
   const token = req.headers.authorization;
   if (!token) return res.status(403).send("No token");
@@ -92,7 +83,7 @@ app.post("/login", async (req, res) => {
   res.json({ token });
 });
 
-// ================= PROJECT =================
+
 app.post("/projects", auth, async (req, res) => {
   const project = await Project.create({
     name: req.body.name,
@@ -145,7 +136,7 @@ app.post("/projects/:id/add", auth, async (req, res) => {
   res.json(project);
 });
 
-// ================= TASK =================
+
 app.post("/tasks", auth, async (req, res) => {
   const { title, project, assignedTo } = req.body;
 
@@ -205,7 +196,7 @@ app.post("/projects/:id/add", auth, async (req, res) => {
   res.json(project);
 });
 
-// ================= DASHBOARD =================
+
 app.get("/dashboard", auth, async (req, res) => {
   const total = await Task.countDocuments({ assignedTo: req.user.id });
 
@@ -223,7 +214,7 @@ app.get("/dashboard", auth, async (req, res) => {
   res.json({ total, byStatus, overdue });
 });
 
-// ================= FRONTEND =================
+
 app.get("/", (req, res) => {
   res.send(`
   <html>
@@ -264,5 +255,5 @@ app.get("/", (req, res) => {
   `);
 });
 
-// ================= START =================
+
 app.listen(5000, () => console.log("Server running on http://localhost:5000"));
