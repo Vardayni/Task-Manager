@@ -4,6 +4,7 @@
   "description": "",
   "main": "single_file_full_stack_app_node_express_frontend.js",
   "scripts": {
+     "start": "node app.js"
     "test": "echo \"Error: no test specified\" && exit 1"
     
   },
